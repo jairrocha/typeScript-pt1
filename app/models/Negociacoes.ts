@@ -1,3 +1,4 @@
+import { EDiaDaSemama } from "../enums/EdiaDaSemana.js";
 import { Negociacao } from "./negociacao.js";
 
 export class Negociacoes{
@@ -5,8 +6,24 @@ export class Negociacoes{
     //private negociacoes : Array<Negociacao> = []; //outra forma de fazer
     private negociacoes : Negociacao[] = [];
 
-    adiciona(negociacao : Negociacao):void{
-        this.negociacoes.push(negociacao);
+    public adiciona(negociacao : Negociacao): Boolean
+    {
+        
+        if(this.IsWorkDay(negociacao.data)){
+            this.negociacoes.push(negociacao);
+            return true;
+        }   
+
+        return false;
+    }
+    
+    
+
+   
+    private IsWorkDay(data: Date) :Boolean 
+    {
+        return data.getDay() != EDiaDaSemama.DOMINGO && data.getDay() != EDiaDaSemama.SABADO;
+
     }
 
     //Use p ReadonlyArray<T> para retorna uma lista somente leitura
@@ -14,7 +31,7 @@ export class Negociacoes{
     //o que não é legal, já que quebra o encapsulamento.
     
     //lista():ReadonlyArray<Negociacao>{ //outra forma de fazer
-    lista():readonly Negociacao[]{    
+    public lista():readonly Negociacao[]{    
         return this.negociacoes; 
     }
 
