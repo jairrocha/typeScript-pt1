@@ -19,6 +19,7 @@ export class NegociacaoController{
         this.negociacoesView.update(this.negociacoes);
        
     }
+    
 
     public adiciona(): void{
         
@@ -38,13 +39,12 @@ export class NegociacaoController{
     }
 
     private criaNegociacao() : Negociacao {
+      
+        return Negociacao.criaDe(
+                    this.inputData.value, 
+                    this.inputQuantidade.value, 
+                    this.inputValor.value);
 
-        const exp = /-/g; //Expressao regular (todos os hífens)
-        const data = new Date(this.inputData.value.replace(exp, ','));
-        const quantidade = parseInt(this.inputQuantidade.value);
-        const valor = parseFloat(this.inputValor.value);
-
-        return new Negociacao(data, quantidade, valor);
     }
 
     private atualizaView(result:Boolean):void{

@@ -21,4 +21,11 @@ export class Negociacao {
     get volume() {
         return this._quantidade * this._valor;
     }
+    static criaDe(dataString, quantidadeString, valorString) {
+        const exp = /-/g; //Expressao regular (todos os hífens)
+        const data = new Date(dataString.replace(exp, ','));
+        const quantidade = parseInt(quantidadeString);
+        const valor = parseFloat(valorString);
+        return new Negociacao(data, quantidade, valor);
+    }
 }
