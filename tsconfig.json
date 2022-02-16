@@ -3,6 +3,7 @@
         "outDir": "dist/js", //apontando os js serão gerados
         "target": "ES6" //Versão do js
         ,"noImplicitAny": true // Faz com que o compilador obrigue a tipagem.
+        ,"removeComments": true
 
         /*Deu erro no meu ambiente
         ",noEmit": true //Se o script ts não compilar não gera arquivo js
