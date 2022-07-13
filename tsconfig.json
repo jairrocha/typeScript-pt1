@@ -1,13 +1,17 @@
 {
-    "compilerOptions": {
-        "outDir": "dist/js", //apontando os js serão gerados
-        "target": "ES6" //Versão do js
-        ,"noImplicitAny": true // Faz com que o compilador obrigue a tipagem.
-        ,"removeComments": true
-
-        /*Deu erro no meu ambiente
-        ",noEmit": true //Se o script ts não compilar não gera arquivo js
-        */
-    },
-    "include": ["app/**/*"] //Origem dos arquivos ts
+	"compilerOptions": {
+		"outDir": "app/dist/js", //apontando os js serão gerados
+		"target": "ES6", //Versão do js
+		"noEmit": false, //Se o script ts não compilar não gera arquivo js
+		"noImplicitAny": true,
+		"removeComments": true,
+		"experimentalDecorators": true //ativa o uso de decatorators
+		
+		//"sourceMap": true //gera o mapeamento para que seja possível o debug no arquivo .ts
+		//,"strictNullChecks": true obriga tratar possiveis nulos (exemplos: inputs)
+	},
+	/*Lê-se: inclua a pasta app e todas as subpasta(**) com todos os arquivos(*) */
+	"include": [
+		"app/src/**/*"
+	] //Origem dos arquivos ts
 }
